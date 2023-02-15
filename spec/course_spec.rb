@@ -9,9 +9,15 @@ RSpec.describe Course do
 end
 
   it 'has a name and capacity' do
-  course = Course.new("Calculus", 2) 
+    course = Course.new("Calculus", 2) 
 
   expect(course.name).to eq("Calculus")
   expect(course.capacity).to eq(2)
+  end
+
+  it 'starts with no students' do
+    course = Course.new("Calculus", 2) 
+
+    expect(course.students).to eq([])
   end
 end
