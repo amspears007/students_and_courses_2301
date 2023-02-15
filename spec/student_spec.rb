@@ -25,6 +25,14 @@ RSpec.describe Student do
     student.log_score(89)
     student.log_score(78)
 
-    expect(student.log_scores).to match_array([89, 78])
+    expect(student.scores).to match_array([89, 78])
+  end
+
+  it 'can give an average of scores' do
+    student = Student.new({name: "Morgan", age: 21}) 
+    student.log_score(89)
+    student.log_score(78)
+
+    expect(student.grade).to eq(83.5)
   end
 end
