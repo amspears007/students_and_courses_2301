@@ -12,4 +12,8 @@ class Course
   def full?
     students.count == 2
   end
+
+  def enroll(student)
+    students << student
+  end
 end
