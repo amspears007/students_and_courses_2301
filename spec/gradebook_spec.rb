@@ -13,14 +13,27 @@ RSpec.describe GradeBook do
 
   it 'can add courses' do
     gradebook = GradeBook.new("Erin")
-    art = Course.new('art')
-    music = Course.new('music')
-    dance = Course.new('dance')
+    art = Course.new('art', 10)
+    music = Course.new('music', 3)
+    dance = Course.new('dance', 2)
 
     gradebook.add_course(art)
     gradebook.add_course(music)
     gradebook.add_course(dance)
 
-    expect(gradebook.courses).to match_array([])
+    expect(gradebook.courses).to match_array([art, music, dance])
+  end
+
+  it 'can list all students in course' do
+    gradebook = GradeBook.new("Erin")
+    art = Course.new('art', 10)
+    music = Course.new('music', 3)
+    dance = Course.new('dance', 2)
+
+    gradebook.add_course(art)
+    gradebook.add_course(music)
+    gradebook.add_course(dance)
+
+    expect(gradebook.list_all_students).to be_a(Hash)
   end
 end

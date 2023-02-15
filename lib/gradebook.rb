@@ -6,5 +6,10 @@ class GradeBook
     @courses = []
   end
 
-  
+  def add_course(course)
+    courses << course
+  end
+
+  def list_
+
 end
