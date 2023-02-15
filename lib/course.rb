@@ -7,6 +7,9 @@ class Course
     @name = name
     @capacity = capacity
     @students = []
+  end
 
+  def full?
+    students.count == 2
   end
 end

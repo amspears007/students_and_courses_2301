@@ -6,18 +6,30 @@ RSpec.describe Course do
     course = Course.new("Calculus", 2) 
   
     expect(course).to be_a(Course)
-end
+  end
 
   it 'has a name and capacity' do
     course = Course.new("Calculus", 2) 
 
-  expect(course.name).to eq("Calculus")
-  expect(course.capacity).to eq(2)
+    expect(course.name).to eq("Calculus")
+    expect(course.capacity).to eq(2)
   end
 
-  it 'starts with no students' do
+  it 'starts with no students and is not full' do
     course = Course.new("Calculus", 2) 
 
     expect(course.students).to eq([])
+    expect(course.full?).to eq(false)
+  end
+
+  it 'can enroll students' do
+    course = Course.new("Calculus", 2) 
+    student1 = Student.new({name: "Morgan", age: 21})
+    student2 = Student.new({name: "Jordan", age: 29}) 
+
+    course.enroll(student1)
+    course.enroll(student2)
+
+    course.students.to match_array([student1, student2])
   end
 end
