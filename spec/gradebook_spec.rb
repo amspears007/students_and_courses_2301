@@ -3,6 +3,13 @@ require './lib/course'
 require './lib/gradebook'
 
 RSpec.describe GradeBook do
+    let(:gradebook) {GradeBook.new("Erin")}
+    let(:art)  {Course.new('art', 10)}
+    let(:music) {Course.new('music', 3)}
+    let(:dance)  {Course.new('dance', 2)}
+    let(:student1) {Student.new({name: "Morgan", age: 21})}
+    let(:student2)  {Student.new({name: "Jordan", age: 29})}
+
   it 'exists has an instructor and starts with no courses' do
     gradebook = GradeBook.new("Erin")
 
@@ -27,7 +34,7 @@ RSpec.describe GradeBook do
   it 'can list all students in course' do
     gradebook = GradeBook.new("Erin")
     gradebook2 = GradeBook.new("Dani")
-    calculus = Course.new("Calculus", 2) 
+
     art = Course.new('art', 10)
     music = Course.new('music', 3)
     dance = Course.new('dance', 2)
@@ -36,14 +43,33 @@ RSpec.describe GradeBook do
 
     gradebook.add_course(art)
     gradebook.add_course(music)
-    gradebook2.add_course(calculus)
+    gradebook.add_course(dance)
 
-    music.enroll(student1)
     art.enroll(student1)
-    art.enroll(student2)
+    dance.enroll(student1)
+    dance.enroll(student2)
 
-    expect(gradebook.list_all_students).to eq({"music" => [student1], "art" => [student1, student2]})
-    expect(gradebook.list_all_students).to be_a(Hash)
-    
+    expected = {art => [student1], dance => [student1, student2], music => []}
+
+    expect(gradebook.list_all_students).to eq(expected)
+    # "course" => [student, student2]
+  end
+
+  it 'determines if student is below threshold' do
+    #`students_below(threshold)` | `Array` of `Student` objects
+    #ake array for students_below 
+    gradebook.add_course(art)
+    gradebook.add_course(music)
+    gradebook.add_course(dance)
+
+    art.enroll(student1)
+    dance.enroll(student2)
+    music.enroll(student2)
+
+    student1.log_score(70)
+    student2.log_score(81)
+    student2.log_score(95)
+
+    expect(gradebook.students_below(75)).to eq([student1])
   end
 end

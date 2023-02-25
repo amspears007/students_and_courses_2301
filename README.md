@@ -91,12 +91,12 @@ You have been contracted by the University of Denver to write a program that mod
 3. A gradebook can `list_all_students` in its courses.
 4. A gradebook can `students_below` to return a list of students whose grades are below a given threshold.
 
-Method Name                 | Return Value (type)
+Method Name (query or command) | Return Value (type)
 -----------                 | -------------------
-`instructor`                | `String`
-`courses`                   | `Array` of `Course` objects
-`add_course(course)`        | `courses` (`Array` of `Course` objects)
-`list_all_students`         | `Hash` where the `key` is a `Course` object and the `value` is an `Array` of `Student` objects
+`instructor` query          | `String`
+`courses`    query          | `Array` of `Course` objects
+`add_course(course)`command | `courses` (`Array` of `Course` objects)
+`list_all_students` query   | `Hash` where the `key` is a `Course` object and the `value` is an `Array` of `Student` objects
 `students_below(threshold)` | `Array` of `Student` objects
 
 

@@ -14,6 +14,6 @@ class Student
   end
 
   def grade
-    scores.sum.fdiv(2)
+    scores.sum.fdiv(scores.count)
   end
 end
