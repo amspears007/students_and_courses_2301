@@ -63,10 +63,13 @@ RSpec.describe GradeBook do
     gradebook.add_course(dance)
 
     art.enroll(student1)
+    music.enroll(student1)
     dance.enroll(student2)
     music.enroll(student2)
 
     student1.log_score(70)
+    student1.log_score(75)
+
     student2.log_score(81)
     student2.log_score(95)
 

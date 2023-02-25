@@ -26,13 +26,23 @@ class GradeBook
       student_hash
   end
 
-  def students_below(score)
+  def students_below(scores)
+    
      courses.map do |course|
       course.students.each do |student|
-        @student_below << student if student.grade < score
+        @student_below << student if student.grade < scores
       end
     end
-    @student_below
+    @student_below.uniq
+    #diff solution using student hash from above
+    # list_all_students.map do |k, students|
+    #   students.select do |student|
+    #     if student.grade < scores
+    #       student_below << student
+    #     end
+    #   end
+    # end
+    # student_below.uniq
   end
 end
 
